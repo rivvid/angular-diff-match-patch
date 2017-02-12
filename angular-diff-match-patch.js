@@ -1,11 +1,17 @@
+var diff = require('diff-match-patch');
 /*
  angular-diff-match-patch
  http://amweiss.github.io/angular-diff-match-patch/
  @license: MIT
 */
 angular.module('diff-match-patch', [])
-	.factory('dmp', ['$window', function dmpFactory($window) {
-		var DiffMatchPatch = $window.diff_match_patch;
+	.factory('dmp', [function dmpFactory() {
+
+		var DiffMatchPatch = diff.diff_match_patch;
+		var DIFF_INSERT = diff.DIFF_INSERT;
+		var DIFF_DELETE = diff.DIFF_DELETE;
+		var DIFF_EQUAL = diff.DIFF_EQUAL;
+		
 		var displayType = {
 			INSDEL: 0,
 			LINEDIFF: 1
